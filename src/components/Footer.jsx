@@ -171,7 +171,10 @@ export default function Footer() {
           {/* Copyright */}
           <div className="text-center md:text-right">
             <p className="text-sm text-secondary-400">
-              © {currentYear} DeshiDwell. All rights reserved by Kazi Fabiha Golam Liya.
+              © {currentYear} DeshiDwell. All rights reserved.
+            </p>
+            <p className="text-xs text-secondary-500 mt-1">
+              Made with ❤️ in Bangladesh
             </p>
           </div>
         </div>

@@ -1,5 +1,8 @@
 "use client";
 
+import Hero from "@/components/Hero";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 import Link from "next/link";
 import {
   Building2,
@@ -15,9 +18,7 @@ import {
   Phone,
   Mail,
 } from "lucide-react";
-import Footer from "@/components/Footer";
-import Navbar from "@/components/Navbar";
-import Hero from "@/components/Hero";
+
 
 export default function LandingPage() {
   // Features Data
@@ -27,28 +28,28 @@ export default function LandingPage() {
       title: "Wide Selection",
       description:
         "Browse through hundreds of verified properties across Dhaka's prime locations.",
-      color: "from-blue-500 to-cyan-500",
+      color: "from-primary-500 to-primary-600",
     },
     {
       icon: Shield,
       title: "Verified Listings",
       description:
         "All properties are verified for authenticity and quality by our expert team.",
-      color: "from-purple-500 to-pink-500",
+      color: "from-secondary-500 to-secondary-600",
     },
     {
       icon: Users,
       title: "Trusted Community",
       description:
         "Join thousands of satisfied tenants and property owners in our platform.",
-      color: "from-orange-500 to-red-500",
+      color: "from-accent-500 to-accent-600",
     },
     {
       icon: TrendingUp,
       title: "Best Deals",
       description:
         "Find competitive prices and exclusive deals on premium rental properties.",
-      color: "from-green-500 to-emerald-500",
+      color: "from-primary-600 to-accent-500",
     },
   ];
 
@@ -118,7 +119,7 @@ export default function LandingPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-secondary-50">
       {/* 1. Navbar */}
       <Navbar />
 
@@ -129,10 +130,10 @@ export default function LandingPage() {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+            <h2 className="text-4xl md:text-5xl font-bold text-secondary-900 mb-4">
               Why Choose DeshiDwell?
             </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            <p className="text-xl text-secondary-600 max-w-2xl mx-auto">
               We provide the best rental experience with verified properties and
               trusted service
             </p>
@@ -144,17 +145,17 @@ export default function LandingPage() {
               return (
                 <div
                   key={index}
-                  className="group p-8 bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-transparent"
+                  className="group p-8 bg-white rounded-2xl shadow-soft hover:shadow-large transition-all duration-300 border border-secondary-100 hover:border-transparent"
                 >
                   <div
                     className={`w-14 h-14 bg-gradient-to-r ${feature.color} rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}
                   >
                     <Icon className="w-7 h-7 text-white" />
                   </div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                  <h3 className="text-xl font-semibold text-secondary-900 mb-3">
                     {feature.title}
                   </h3>
-                  <p className="text-gray-600 leading-relaxed">
+                  <p className="text-secondary-600 leading-relaxed">
                     {feature.description}
                   </p>
                 </div>
@@ -165,14 +166,14 @@ export default function LandingPage() {
       </section>
 
       {/* 4. Popular Locations Section */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-secondary-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+            <h2 className="text-4xl md:text-5xl font-bold text-secondary-900 mb-4">
               Popular Locations
             </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Explore properties in Dhakas most sought-after neighborhoods
+            <p className="text-xl text-secondary-600 max-w-2xl mx-auto">
+              Explore properties in Dhaka`s most sought-after neighborhoods
             </p>
           </div>
 
@@ -181,7 +182,7 @@ export default function LandingPage() {
               <Link
                 key={index}
                 href={`/properties?location=${location.name}`}
-                className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300"
+                className="group relative overflow-hidden rounded-2xl shadow-soft hover:shadow-large transition-all duration-300"
               >
                 <div className="aspect-[4/3] overflow-hidden">
                   <img
@@ -190,7 +191,7 @@ export default function LandingPage() {
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   />
                 </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
                   <div className="flex items-center space-x-2 mb-2">
                     <MapPin className="w-4 h-4" />
@@ -199,7 +200,7 @@ export default function LandingPage() {
                   <p className="text-sm text-gray-200 mb-1">
                     {location.properties}+ Properties
                   </p>
-                  <p className="text-sm font-semibold text-blue-300">
+                  <p className="text-sm font-semibold text-primary-300">
                     {location.priceRange}
                   </p>
                 </div>
@@ -213,11 +214,11 @@ export default function LandingPage() {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+            <h2 className="text-4xl md:text-5xl font-bold text-secondary-900 mb-4">
               Browse by Property Type
             </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Find exactly what youre looking for
+            <p className="text-xl text-secondary-600 max-w-2xl mx-auto">
+              Find exactly what you`re looking for
             </p>
           </div>
 
@@ -228,15 +229,15 @@ export default function LandingPage() {
                 <Link
                   key={index}
                   href={`/properties?type=${type.name}`}
-                  className="group p-8 bg-gradient-to-br from-gray-50 to-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-blue-200"
+                  className="group p-8 bg-gradient-to-br from-secondary-50 to-white rounded-2xl shadow-soft hover:shadow-large transition-all duration-300 border border-secondary-100 hover:border-primary-200"
                 >
-                  <div className="w-16 h-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 mx-auto">
+                  <div className="w-16 h-16 bg-primary-600 rounded-2xl flex items-center justify-center mb-4 group-hover:bg-primary-700 group-hover:scale-110 transition-all duration-300 mx-auto">
                     <Icon className="w-8 h-8 text-white" />
                   </div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-2 text-center">
+                  <h3 className="text-xl font-semibold text-secondary-900 mb-2 text-center">
                     {type.name}
                   </h3>
-                  <p className="text-gray-600 text-center text-sm">
+                  <p className="text-secondary-600 text-center text-sm">
                     {type.count}+ available
                   </p>
                 </Link>
@@ -247,13 +248,13 @@ export default function LandingPage() {
       </section>
 
       {/* 6. Testimonials Section */}
-      <section className="py-20 bg-gradient-to-br from-blue-50 to-purple-50">
+      <section className="py-20 bg-gradient-to-br from-primary-50 to-secondary-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+            <h2 className="text-4xl md:text-5xl font-bold text-secondary-900 mb-4">
               What Our Customers Say
             </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            <p className="text-xl text-secondary-600 max-w-2xl mx-auto">
               Trusted by thousands of happy tenants and property owners
             </p>
           </div>
@@ -262,30 +263,32 @@ export default function LandingPage() {
             {testimonials.map((testimonial, index) => (
               <div
                 key={index}
-                className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300"
+                className="bg-white p-8 rounded-2xl shadow-soft hover:shadow-large transition-all duration-300"
               >
                 <div className="flex items-center mb-6">
                   <img
                     src={testimonial.image}
                     alt={testimonial.name}
-                    className="w-14 h-14 rounded-full mr-4 ring-2 ring-blue-500"
+                    className="w-14 h-14 rounded-full mr-4 ring-2 ring-primary-500"
                   />
                   <div>
-                    <h4 className="font-semibold text-gray-900">
+                    <h4 className="font-semibold text-secondary-900">
                       {testimonial.name}
                     </h4>
-                    <p className="text-sm text-gray-600">{testimonial.role}</p>
+                    <p className="text-sm text-secondary-600">
+                      {testimonial.role}
+                    </p>
                   </div>
                 </div>
                 <div className="flex mb-4">
                   {[...Array(testimonial.rating)].map((_, i) => (
                     <Star
                       key={i}
-                      className="w-5 h-5 fill-yellow-400 text-yellow-400"
+                      className="w-5 h-5 fill-accent-500 text-accent-500"
                     />
                   ))}
                 </div>
-                <p className="text-gray-700 leading-relaxed italic">
+                <p className="text-secondary-700 leading-relaxed italic">
                   {testimonial.text}
                 </p>
               </div>
@@ -297,28 +300,28 @@ export default function LandingPage() {
       {/* 7. CTA Section */}
       <section
         id="contact"
-        className="py-20 bg-gradient-to-r from-blue-600 to-purple-600 text-white"
+        className="py-20 bg-gradient-to-r from-primary-600 to-primary-700 text-white"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
               Ready to Find Your Perfect Home?
             </h2>
-            <p className="text-xl text-blue-100 max-w-2xl mx-auto mb-8">
+            <p className="text-xl text-primary-100 max-w-2xl mx-auto mb-8">
               Join DeshiDwell today and discover amazing rental properties
               across Dhaka
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/properties"
-                className="px-8 py-4 bg-white text-blue-600 rounded-xl font-semibold hover:shadow-2xl hover:scale-105 transition-all duration-200 inline-flex items-center justify-center space-x-2"
+                className="px-8 py-4 bg-white text-primary-600 rounded-xl font-semibold hover:shadow-large hover:scale-105 transition-all duration-200 inline-flex items-center justify-center space-x-2"
               >
                 <span>Browse Properties</span>
                 <ArrowRight className="w-5 h-5" />
               </Link>
               <Link
                 href="/sign-up"
-                className="px-8 py-4 bg-transparent border-2 border-white text-white rounded-xl font-semibold hover:bg-white hover:text-blue-600 transition-all duration-200"
+                className="px-8 py-4 bg-transparent border-2 border-white text-white rounded-xl font-semibold hover:bg-white hover:text-primary-600 transition-all duration-200"
               >
                 Sign Up Free
               </Link>
@@ -332,21 +335,21 @@ export default function LandingPage() {
                 <Phone className="w-6 h-6" />
               </div>
               <h3 className="font-semibold mb-2">Call Us</h3>
-              <p className="text-blue-100">+880 1712-345678</p>
+              <p className="text-primary-100">+880 1712-345678</p>
             </div>
             <div className="text-center">
               <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Mail className="w-6 h-6" />
               </div>
               <h3 className="font-semibold mb-2">Email Us</h3>
-              <p className="text-blue-100">info@deshidwell.com</p>
+              <p className="text-primary-100">info@deshidwell.com</p>
             </div>
             <div className="text-center">
               <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
                 <MapPin className="w-6 h-6" />
               </div>
               <h3 className="font-semibold mb-2">Visit Us</h3>
-              <p className="text-blue-100">Gulshan 2, Dhaka</p>
+              <p className="text-primary-100">Gulshan 2, Dhaka</p>
             </div>
           </div>
         </div>
