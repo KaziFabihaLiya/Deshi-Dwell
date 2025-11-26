@@ -10,9 +10,8 @@ A modern, full-stack property rental platform built with Next.js, empowering use
 ## Features
 
 - **User Authentication**: Secure sign-in/up with Clerk (email, social logins).
-- **Property Management**: Add, view, edit, and delete listings with image uploads.
+- **Property Management**: Add, view, and delete listings with image uploads.
 - **Search & Browse**: Filter properties by location, type, price, and amenities.
-- **Dark Mode**: Toggleable theme for better accessibility.
 - **Responsive Design**: Mobile-first UI with desktop optimizations.
 - **Admin Dashboard**: Manage personal properties with stats (total value, avg. rent).
 - **Celebratory UX**: Toast notifications and confetti on successful actions.

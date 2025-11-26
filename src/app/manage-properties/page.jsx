@@ -97,7 +97,7 @@ export default function ManageProperties() {
   };
 
   return (
-    <div className="min-h-screen bg-secondary-50 dark:bg-secondary-900">
+    <div className="min-h-screen bg-secondary-50 ">
       <Navbar />
       <Toaster position="top-center" />
 

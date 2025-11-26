@@ -95,7 +95,7 @@ export default function PropertiesPage() {
   };
 
   return (
-    <div className="min-h-screen bg-secondary-50 dark:bg-secondary-900">
+    <div className="min-h-screen bg-secondary-50 ">
       <Navbar />
 
       <div className="pt-28 pb-20">

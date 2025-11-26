@@ -83,14 +83,15 @@ export default function Navbar() {
                   href="/add-property"
                   className="flex items-center space-x-2 px-4 py-2 bg-primary-600 text-white rounded-lg text-sm font-medium hover:bg-primary-700 hover:shadow-medium transition-all duration-200"
                 >
-                  <PlusCircle className="w-4 h-4" />
+                  <PlusCircle className="w-5 h-5" />
                   <span>Add Property</span>
                 </Link>
                 <Link
                   href="/manage-properties"
-                  className="p-2 rounded-lg text-secondary-700 hover:bg-secondary-100 dark:text-secondary-200 dark:hover:bg-secondary-800 transition-all duration-200"
+                  className="flex items-center space-x-2 px-4 py-2 bg-primary-600 text-white rounded-lg text-sm font-medium hover:bg-primary-700 hover:shadow-medium transition-all duration-300"
                 >
                   <Settings className="w-5 h-5" />
+                  <span>Manage Property</span>
                 </Link>
                 <UserButton
                   appearance={{
