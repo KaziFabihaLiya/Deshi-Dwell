@@ -1,36 +1,145 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# DeshiDwell
 
-## Getting Started
+![DeshiDwell Logo](public/window.svg) <!-- Replace with your actual logo path if available -->
 
-First, run the development server:
+A modern, full-stack property rental platform built with Next.js, empowering users to discover, list, and manage verified rentals across Bangladesh. Features seamless authentication via Clerk, responsive UI with Tailwind CSS, and a MongoDB-powered backend for property management.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Live-Link
+` https://deshi-dwell.vercel.app/ `
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Features
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+- **User Authentication**: Secure sign-in/up with Clerk (email, social logins).
+- **Property Management**: Add, view, edit, and delete listings with image uploads.
+- **Search & Browse**: Filter properties by location, type, price, and amenities.
+- **Dark Mode**: Toggleable theme for better accessibility.
+- **Responsive Design**: Mobile-first UI with desktop optimizations.
+- **Admin Dashboard**: Manage personal properties with stats (total value, avg. rent).
+- **Celebratory UX**: Toast notifications and confetti on successful actions.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Tech Stack
 
-## Learn More
+- **Frontend**: Next.js 16, React 19, Tailwind CSS 4, Lucide React (icons), React Hot Toast, Canvas Confetti, SweetAlert2.
+- **Backend**: Node.js, Express 5, MongoDB 7, CORS, dotenv.
+- **Auth**: Clerk.
+- **Deployment**: Vercel (frontend), Render/MongoDB Atlas (backend).
+- **Other**: Axios (API calls), Heroicons.
 
-To learn more about Next.js, take a look at the following resources:
+## Setup & Installation
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Prerequisites
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Node.js (v18+)
+- MongoDB (local or Atlas cluster)
+- Clerk account (for auth keys)
+- Git
 
-## Deploy on Vercel
+### Backend Setup
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Clone the repo and navigate to backend folder:
+   ```
+   git clone <your-repo-url>
+   cd backend
+   ```
+2. Install dependencies:
+   ```
+   npm install
+   ```
+3. Create `.env` file in backend root:
+   ```
+   MONGODB_URI=your_mongodb_connection_string
+   PORT=5000
+   ```
+4. Start the server:
+   ```
+   npm start
+   ```
+   - Server runs on `http://localhost:5000`.
+   - Test: `GET /properties` should return empty array if no data.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Frontend Setup
+
+1. Navigate to root (Next.js app):
+   ```
+   cd ..  # From backend
+   ```
+2. Install dependencies:
+   ```
+   npm install
+   ```
+3. Create `.env.local` in root:
+   ```
+   NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_...
+   CLERK_SECRET_KEY=sk_test_...
+   NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
+   NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
+   NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=/
+   NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/
+   NEXT_PUBLIC_API_URL=http://localhost:5000  # Update to production backend URL
+   ```
+4. Run dev server:
+   ```
+   npm run dev
+   ```
+   - App runs on `http://localhost:3000`.
+   - Edit `app/page.js` for hot-reloads.
+
+### Database Setup
+
+- Use MongoDB Atlas (free tier): Create cluster, get connection string, whitelist IP 0.0.0.0/0.
+- Collections: `properties` (fields: `_id`, `userId`, `title`, `price`, `location`, etc.).
+
+### Build & Production
+
+- Frontend: `npm run build` → `npm start` (runs on port 3000).
+- Backend: Already production-ready with `npm start`.
+
+## Route Summary
+
+### Frontend Routes (Next.js App Router)
+
+| Route                | Description                                      | Auth Required? |
+| -------------------- | ------------------------------------------------ | -------------- |
+| `/`                  | Home page: Hero, stats, testimonials, features.  | No             |
+| `/properties`        | Browse all properties (search/filter).           | No             |
+| `/properties/[id]`   | Single property details.                         | No             |
+| `/add-property`      | Form to add new listing.                         | Yes            |
+| `/manage-properties` | Dashboard: List, stats, delete owned properties. | Yes            |
+| `/sign-in`           | Clerk sign-in page.                              | No             |
+| `/sign-up`           | Clerk sign-up page.                              | No             |
+| `/about`             | About page (static).                             | No             |
+| `/contact`           | Contact form/page.                               | No             |
+
+### Backend API Endpoints (Express)
+
+| Method | Endpoint           | Description                                  |
+| ------ | ------------------ | -------------------------------------------- |
+| GET    | `/properties`      | Fetch all properties (paginated/filterable). |
+| POST   | `/properties`      | Create new property (multipart for images).  |
+| GET    | `/properties/[id]` | Get single property by ID.                   |
+| PUT    | `/properties/[id]` | Update property.                             |
+| DELETE | `/properties/[id]` | Delete property (auth check).                |
+
+- **Auth**: Frontend uses Clerk; backend assumes `userId` from Clerk webhook or JWT (extend as needed).
+- **Error Handling**: API returns JSON with status codes (200 OK, 404 Not Found, etc.).
+
+## Deployment
+
+- **Frontend (Vercel)**:
+  1. Push to GitHub.
+  2. Import repo in Vercel dashboard.
+  3. Add env vars (e.g., Clerk keys, `NEXT_PUBLIC_API_URL=https://your-backend.vercel.app`).
+  4. Deploy → Auto-builds on push.
+- **Backend (Vercel Serverless or Render)**:
+  1. For Vercel: Add `/api` routes in Next.js (migrate Express logic).
+  2. For Render: Connect GitHub, set build `npm install`, start `npm start`, add env vars.
+- **Database**: MongoDB Atlas (free for dev).
+- **Custom Domain**: Add via Vercel/Render dashboard.
+
+
+## License
+
+MIT License © 2025 DeshiDwell Team. See [LICENSE](LICENSE) for details.
+Made by Kazi Fabiha Golam Liya
+
+---
