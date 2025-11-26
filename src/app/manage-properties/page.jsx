@@ -16,6 +16,7 @@ import {
   AlertCircle,
 } from "lucide-react";
 import toast, { Toaster } from "react-hot-toast";
+import Swal from "sweetalert2";
 
 export default function ManageProperties() {
   const { userId, isLoaded } = useAuth();
@@ -57,7 +58,18 @@ export default function ManageProperties() {
   };
 
   const handleDelete = async (id) => {
-    if (!confirm("Are you sure you want to delete this property?")) {
+    const result = await Swal.fire({
+      title: "Are you sure?",
+      text: "You want to delete this property?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+      confirmButtonText: "Yes, delete it!",
+      cancelButtonText: "Cancel",
+    });
+
+    if (!result.isConfirmed) {
       return;
     }
 

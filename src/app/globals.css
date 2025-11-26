@@ -1,26 +1,195 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Define custom theme using @theme directive */
+@theme {
+  /* Custom color palettes (using hex values from your original config) */
+  --color-primary-50: #f6f7f6;
+  --color-primary-100: #e3e6e3;
+  --color-primary-200: #c7cdc7;
+  --color-primary-300: #a3ada3;
+  --color-primary-400: #7d8a7d;
+  --color-primary-500: #5f6f5f;
+  --color-primary-600: #4d5a4d;
+  --color-primary-700: #3f4a3f;
+  --color-primary-800: #353d35;
+  --color-primary-900: #2d342d;
+
+  --color-secondary-50: #fafaf9;
+  --color-secondary-100: #f5f5f4;
+  --color-secondary-200: #e7e5e4;
+  --color-secondary-300: #d6d3d1;
+  --color-secondary-400: #a8a29e;
+  --color-secondary-500: #78716c;
+  --color-secondary-600: #57534e;
+  --color-secondary-700: #44403c;
+  --color-secondary-800: #292524;
+  --color-secondary-900: #1c1917;
+
+  --color-accent-50: #fef8f3;
+  --color-accent-100: #fdeee0;
+  --color-accent-200: #fad9b8;
+  --color-accent-300: #f7c08e;
+  --color-accent-400: #f3a05c;
+  --color-accent-500: #e98439;
+  --color-accent-600: #d4681f;
+  --color-accent-700: #b04f19;
+  --color-accent-800: #8e401a;
+  --color-accent-900: #743618;
+
+  /* Custom font families */
+  --font-family-sans: var(--font-geist-sans), Inter, system-ui, sans-serif;
+  --font-family-mono: var(--font-geist-mono), Monaco, monospace;
+
+  /* Custom animations */
+  --animate-fade-in: fadeIn 0.6s ease-in-out;
+  --animate-slide-up: slideUp 0.5s ease-out;
+  --animate-slide-down: slideDown 0.5s ease-out;
+  --animate-scale-in: scaleIn 0.3s ease-out;
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideUp {
+    0% {
+      transform: translateY(20px);
+      opacity: 0;
+    }
+
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideDown {
+    0% {
+      transform: translateY(-20px);
+      opacity: 0;
+    }
+
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes scaleIn {
+    0% {
+      transform: scale(0.95);
+      opacity: 0;
+    }
+
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  /* Custom box shadows */
+  --shadow-soft: 0 1px 3px rgba(0, 0, 0, 0.05);
+  --shadow-medium: 0 4px 6px rgba(0, 0, 0, 0.07);
+  --shadow-large: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
+/* Inline theme for referencing variables (e.g., for background/foreground) */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-background: var(--color-secondary-50);
+  --color-foreground: var(--color-secondary-900);
 }
 
-@media (prefers-color-scheme: dark) {
+/* Base styles using CSS variables (no @apply needed, like the example) */
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: 250 250 249;
+    /* secondary-50 as HSL */
+    --foreground: 28 25 23;
+    /* secondary-900 as HSL */
+  }
+
+  * {
+    border-color: var(--color-secondary-200);
+  }
+
+  body {
+    background: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family: var(--font-family-sans);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Component styles using native CSS (adapted from your @apply; add animations/shadows as needed) */
+@layer components {
+  .btn-primary {
+    background-color: var(--color-primary-600);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    /* py-3 px-6 */
+    border-radius: 0.5rem;
+    /* rounded-lg */
+    transition: all 200ms;
+    font-weight: 500;
+    /* font-medium */
+  }
+
+  .btn-primary:hover {
+    background-color: var(--color-primary-700);
+  }
+
+  .btn-secondary {
+    background-color: white;
+    color: var(--color-primary-600);
+    border: 2px solid var(--color-primary-600);
+    padding: 0.75rem 1.5rem;
+    /* py-3 px-6 */
+    border-radius: 0.5rem;
+    /* rounded-lg */
+    transition: all 200ms;
+    font-weight: 500;
+    /* font-medium */
+  }
+
+  .btn-secondary:hover {
+    background-color: var(--color-primary-50);
+  }
+
+  .card {
+    background-color: white;
+    border-radius: 0.75rem;
+    /* rounded-xl */
+    box-shadow: var(--shadow-soft);
+    transition: all 300ms;
+    overflow: hidden;
+  }
+
+  .card:hover {
+    box-shadow: var(--shadow-large);
+  }
+}
+
+/* Custom scrollbar using CSS variables (no @apply) */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--color-secondary-100);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-secondary-400);
+  border-radius: 9999px;
+  /* rounded-full */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-secondary-500);
 }

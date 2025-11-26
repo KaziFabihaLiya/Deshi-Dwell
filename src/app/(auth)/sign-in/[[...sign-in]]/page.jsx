@@ -1,8 +1,36 @@
-import { SignIn } from "@clerk/nextjs";
+"use client";
+
+import { SignIn, useUser } from "@clerk/nextjs";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
+import toast, { Toaster } from "react-hot-toast";
+import confetti from "canvas-confetti";
 
 export default function SignInPage() {
+  const { isSignedIn } = useUser();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (isSignedIn) {
+      toast.success("Signed in successfully! Welcome back!", {
+        duration: 3000,
+        position: "top-center",
+      });
+
+      confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { y: 0.6 },
+      });
+
+      setTimeout(() => {
+        router.push("/"); // Replace with your desired redirect path, e.g., "/dashboard"
+      }, 3000);
+    }
+  }, [isSignedIn, router]);
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary-50 via-white to-secondary-50 flex items-center pl-90 py-5">
+    <div className="min-h-screen bg-gradient-to-br from-[#f6f7f6] via-white to-[#fafaf9] flex items-center pl-90 py-5">
       <div className="w-full max-w-md flex flex-row justify-between items-center gap-20">
         <div className="text-center mb-8 text-black">
           <h1 className="text-3xl font-bold mb-2 text-nowrap">Welcome Back</h1>
@@ -14,6 +42,7 @@ export default function SignInPage() {
 
         <div className="rounded-2xl shadow-large p-8">
           <SignIn
+            redirectUrl={false}
             appearance={{
               elements: {
                 rootBox: "w-full",
@@ -37,6 +66,7 @@ export default function SignInPage() {
           />
         </div>
       </div>
+      <Toaster />
     </div>
   );
 }
