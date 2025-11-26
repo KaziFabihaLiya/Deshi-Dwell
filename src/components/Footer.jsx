@@ -50,19 +50,19 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-gray-300">
+    <footer className="bg-secondary-900 text-secondary-300">
       {/* Main Footer Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-12 mb-12">
           {/* Brand Section */}
           <div className="lg:col-span-2">
             <Link href="/" className="flex items-center space-x-2 mb-6 group">
-              <div className="bg-gradient-to-r from-blue-600 to-purple-600 p-2 rounded-lg group-hover:scale-110 transition-transform duration-200">
+              <div className="bg-primary-600 p-2 rounded-lg group-hover:bg-primary-700 transition-all duration-200">
                 <Building2 className="w-6 h-6 text-white" />
               </div>
               <span className="text-2xl font-bold text-white">DeshiDwell</span>
             </Link>
-            <p className="text-gray-400 mb-6 leading-relaxed">
+            <p className="text-secondary-400 mb-6 leading-relaxed">
               Your trusted platform for finding the perfect rental accommodation
               in Dhaka. We connect tenants with quality properties across the
               city.
@@ -70,8 +70,10 @@ export default function Footer() {
 
             {/* Contact Info */}
             <div className="space-y-3">
-              <div className="flex items-center space-x-3">
-                <Mail className="w-5 h-5 text-blue-500" />
+              <div className="flex items-center space-x-3 text-secondary-300">
+                <div className="w-10 h-10 bg-secondary-800 rounded-full flex items-center justify-center">
+                  <Mail className="w-5 h-5 text-primary-500" />
+                </div>
                 <a
                   href="mailto:info@deshidwell.com"
                   className="hover:text-white transition-colors"
@@ -79,8 +81,10 @@ export default function Footer() {
                   info@deshidwell.com
                 </a>
               </div>
-              <div className="flex items-center space-x-3">
-                <Phone className="w-5 h-5 text-blue-500" />
+              <div className="flex items-center space-x-3 text-secondary-300">
+                <div className="w-10 h-10 bg-secondary-800 rounded-full flex items-center justify-center">
+                  <Phone className="w-5 h-5 text-primary-500" />
+                </div>
                 <a
                   href="tel:+8801712345678"
                   className="hover:text-white transition-colors"
@@ -88,8 +92,10 @@ export default function Footer() {
                   +880 1712-345678
                 </a>
               </div>
-              <div className="flex items-start space-x-3">
-                <MapPin className="w-5 h-5 text-blue-500 mt-1" />
+              <div className="flex items-start space-x-3 text-secondary-300">
+                <div className="w-10 h-10 bg-secondary-800 rounded-full flex items-center justify-center">
+                  <MapPin className="w-5 h-5 text-primary-500 mt-1" />
+                </div>
                 <span className="text-sm">
                   House 123, Road 45
                   <br />
@@ -120,21 +126,21 @@ export default function Footer() {
         </div>
 
         {/* Newsletter Section */}
-        <div className="border-t border-gray-700 pt-8 mb-8">
+        <div className="border-t border-secondary-800 pt-8 mb-8">
           <div className="max-w-2xl">
             <h3 className="text-white font-semibold text-lg mb-3">
               Subscribe to our Newsletter
             </h3>
-            <p className="text-gray-400 mb-4">
+            <p className="text-secondary-400 mb-4">
               Get the latest properties and updates delivered to your inbox.
             </p>
             <div className="flex flex-col sm:flex-row gap-3">
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="flex-1 px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-white placeholder-gray-500"
+                className="flex-1 px-4 py-3 bg-secondary-800 border border-secondary-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 text-white placeholder-secondary-500"
               />
-              <button className="px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg font-semibold hover:shadow-lg hover:scale-105 transition-all duration-200 whitespace-nowrap">
+              <button className="px-8 py-3 bg-primary-600 text-white rounded-lg font-semibold hover:bg-primary-700 hover:shadow-medium transition-all duration-200 whitespace-nowrap">
                 Subscribe
               </button>
             </div>
@@ -142,7 +148,7 @@ export default function Footer() {
         </div>
 
         {/* Social Links & Copyright */}
-        <div className="border-t border-gray-700 pt-8 flex flex-col md:flex-row justify-between items-center gap-6">
+        <div className="border-t border-secondary-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-6">
           {/* Social Media */}
           <div className="flex items-center space-x-4">
             {socialLinks.map((social) => {
@@ -153,7 +159,7 @@ export default function Footer() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-600 transition-all duration-200 group"
+                  className="w-10 h-10 bg-secondary-800 rounded-full flex items-center justify-center hover:bg-primary-600 transition-all duration-200 group"
                   aria-label={social.label}
                 >
                   <Icon className="w-5 h-5 group-hover:scale-110 transition-transform" />
@@ -164,11 +170,8 @@ export default function Footer() {
 
           {/* Copyright */}
           <div className="text-center md:text-right">
-            <p className="text-sm text-gray-400">
-              © {currentYear} DeshiDwell. All rights reserved.
-            </p>
-            <p className="text-xs text-gray-500 mt-1">
-              Made with ❤️ in Bangladesh
+            <p className="text-sm text-secondary-400">
+              © {currentYear} DeshiDwell. All rights reserved by Kazi Fabiha Golam Liya.
             </p>
           </div>
         </div>

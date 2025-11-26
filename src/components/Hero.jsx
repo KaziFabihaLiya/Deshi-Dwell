@@ -11,20 +11,20 @@ export default function Hero() {
   const slides = [
     {
       image:
-        "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=1200&q=80",
+        "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=80",
       title: "Find Your Perfect Home",
       subtitle: "Discover amazing rental properties across Dhaka",
     },
     {
       image:
-        "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=80",
-      title: "Luxury Living Spaces",
-      subtitle: "Experience comfort and elegance in prime locations",
+        "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&q=80",
+      title: "Modern Living Spaces",
+      subtitle: "Experience comfort in prime locations",
     },
     {
       image:
-        "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&q=80",
-      title: "Affordable & Comfortable",
+        "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1200&q=80",
+      title: "Affordable & Quality",
       subtitle: "Quality accommodations that fit your budget",
     },
   ];
@@ -58,7 +58,7 @@ export default function Hero() {
             className="absolute inset-0 bg-cover bg-center"
             style={{ backgroundImage: `url(${slide.image})` }}
           >
-            <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-black/30" />
           </div>
         </div>
       ))}
@@ -66,13 +66,13 @@ export default function Hero() {
       {/* Navigation Arrows */}
       <button
         onClick={prevSlide}
-        className="absolute left-4 top-1/2 -translate-y-1/2 z-10 p-3 bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-all duration-200 group"
+        className="absolute left-4 top-1/2 -translate-y-1/2 z-10 p-3 bg-white/10 backdrop-blur-sm rounded-full hover:bg-white/20 transition-all duration-200 group"
       >
         <ChevronLeft className="w-6 h-6 text-white group-hover:scale-110 transition-transform" />
       </button>
       <button
         onClick={nextSlide}
-        className="absolute right-4 top-1/2 -translate-y-1/2 z-10 p-3 bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-all duration-200 group"
+        className="absolute right-4 top-1/2 -translate-y-1/2 z-10 p-3 bg-white/10 backdrop-blur-sm rounded-full hover:bg-white/20 transition-all duration-200 group"
       >
         <ChevronRight className="w-6 h-6 text-white group-hover:scale-110 transition-transform" />
       </button>
@@ -83,10 +83,10 @@ export default function Hero() {
           <button
             key={index}
             onClick={() => setCurrentSlide(index)}
-            className={`w-2 h-2 rounded-full transition-all duration-300 ${
+            className={`h-1.5 rounded-full transition-all duration-300 ${
               index === currentSlide
                 ? "bg-white w-8"
-                : "bg-white/50 hover:bg-white/75"
+                : "bg-white/50 hover:bg-white/75 w-1.5"
             }`}
           />
         ))}
@@ -96,31 +96,30 @@ export default function Hero() {
       <div className="relative z-10 h-full flex items-center">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="max-w-3xl">
-            {/* Animated Title */}
-            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 animate-fade-in">
+            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 animate-fade-in leading-tight">
               {slides[currentSlide].title}
             </h1>
-            <p className="text-xl md:text-2xl text-gray-200 mb-8 animate-fade-in-delay">
+            <p className="text-xl md:text-2xl text-gray-100 mb-8 animate-slide-up">
               {slides[currentSlide].subtitle}
             </p>
 
             {/* Search Bar */}
-            <div className="bg-white rounded-2xl shadow-2xl p-2 flex flex-col md:flex-row gap-2 max-w-2xl animate-fade-in-delay-2">
-              <div className="flex items-center flex-1 px-4 py-3 bg-gray-50 rounded-xl">
-                <MapPin className="w-5 h-5 text-gray-400 mr-3" />
+            <div className="bg-white rounded-2xl shadow-large p-2 flex flex-col md:flex-row gap-2 max-w-2xl animate-slide-up">
+              <div className="flex items-center flex-1 px-4 py-3 bg-secondary-50 rounded-xl">
+                <MapPin className="w-5 h-5 text-secondary-400 mr-3" />
                 <input
                   type="text"
                   placeholder="Enter location (e.g., Gulshan, Banani)"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full bg-transparent outline-none text-gray-700 placeholder-gray-400"
+                  className="w-full bg-transparent outline-none text-secondary-900 placeholder-secondary-400"
                 />
               </div>
               <Link
                 href={`/properties${
                   searchQuery ? `?search=${searchQuery}` : ""
                 }`}
-                className="flex items-center justify-center space-x-2 px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl font-semibold hover:shadow-lg hover:scale-105 transition-all duration-200"
+                className="flex items-center justify-center space-x-2 px-8 py-3 bg-primary-600 text-white rounded-xl font-semibold hover:bg-primary-700 hover:shadow-medium transition-all duration-200"
               >
                 <Search className="w-5 h-5" />
                 <span>Search</span>
@@ -133,7 +132,7 @@ export default function Hero() {
                 <div className="text-3xl md:text-4xl font-bold text-white mb-2">
                   500+
                 </div>
-                <div className="text-gray-300 text-sm md:text-base">
+                <div className="text-gray-200 text-sm md:text-base">
                   Properties
                 </div>
               </div>
@@ -141,7 +140,7 @@ export default function Hero() {
                 <div className="text-3xl md:text-4xl font-bold text-white mb-2">
                   50+
                 </div>
-                <div className="text-gray-300 text-sm md:text-base">
+                <div className="text-gray-200 text-sm md:text-base">
                   Locations
                 </div>
               </div>
@@ -149,7 +148,7 @@ export default function Hero() {
                 <div className="text-3xl md:text-4xl font-bold text-white mb-2">
                   1000+
                 </div>
-                <div className="text-gray-300 text-sm md:text-base">
+                <div className="text-gray-200 text-sm md:text-base">
                   Happy Tenants
                 </div>
               </div>
@@ -157,38 +156,6 @@ export default function Hero() {
           </div>
         </div>
       </div>
-
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-24 left-1/2 -translate-x-1/2 z-10 animate-bounce hidden md:block">
-        <div className="w-6 h-10 border-2 border-white rounded-full flex items-start justify-center p-2">
-          <div className="w-1 h-3 bg-white rounded-full" />
-        </div>
-      </div>
-
-      <style jsx>{`
-        @keyframes fade-in {
-          from {
-            opacity: 0;
-            transform: translateY(20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        .animate-fade-in {
-          animation: fade-in 0.8s ease-out;
-        }
-
-        .animate-fade-in-delay {
-          animation: fade-in 0.8s ease-out 0.2s both;
-        }
-
-        .animate-fade-in-delay-2 {
-          animation: fade-in 0.8s ease-out 0.4s both;
-        }
-      `}</style>
     </section>
   );
 }
