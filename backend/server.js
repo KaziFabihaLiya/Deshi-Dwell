@@ -6,7 +6,12 @@ require("dotenv").config();
 const app = express();
 
 // Middleware
-app.use(cors());
+app.use(
+  cors({
+    origin: ["http://localhost:3000", "https://deshi-dwell.vercel.app"], // Add your Vercel URL
+    credentials: true,
+  })
+);
 app.use(express.json());
 
 // MongoDB Connection
@@ -156,7 +161,6 @@ app.put("/api/properties/:id", async (req, res) => {
       updatedAt: new Date(),
     };
 
-    // Remove _id from update data if present
     delete updateData._id;
 
     const result = await propertiesCollection.findOneAndUpdate(
