@@ -20,9 +20,28 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <ClerkProvider>
-      <html lang="en" className="light">
+      <html lang="en" suppressHydrationWarning>
+        <head>
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+                (function() {
+                  try {
+                    const savedTheme = localStorage.getItem('theme') || 'light';
+                    const html = document.documentElement;
+                    if (savedTheme === 'dark') {
+                      html.classList.add('dark');
+                    } else {
+                      html.classList.remove('dark');
+                    }
+                  } catch (e) {}
+                })();
+              `,
+            }}
+          />
+        </head>
         <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased bg-secondary-50`}
+          className={`${geistSans.variable} ${geistMono.variable}`}
         >
           {children}
         </body>

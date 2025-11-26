@@ -12,6 +12,7 @@ import {
   Bath,
   DollarSign,
   ChevronDown,
+  ArrowRight,
 } from "lucide-react";
 
 export default function PropertiesPage() {
@@ -94,7 +95,7 @@ export default function PropertiesPage() {
   };
 
   return (
-    <div className="min-h-screen bg-secondary-50">
+    <div className="min-h-screen bg-secondary-50 dark:bg-secondary-900">
       <Navbar />
 
       <div className="pt-28 pb-20">
@@ -310,12 +311,21 @@ export default function PropertiesPage() {
                           <span>{property.bathrooms}</span>
                         </div>
                       </div>
-                      <div className="text-right">
-                        <div className="text-2xl font-bold text-primary-600">
-                          ৳{property.price.toLocaleString()}
-                        </div>
-                        <div className="text-xs text-secondary-500">
-                          per month
+                      <div className="text-right flex flex-row gap-1">
+                        <Link
+                          href={`/properties/${property._id}`}
+                          className="flex items-center justify-center space-x-2 w-full py-3 bg-primary-600 text-white rounded-xl font-semibold hover:bg-primary-700 hover:shadow-medium transition-all duration-200 mx-3 px-3"
+                        >
+                          <span>View Details</span>
+                          <ArrowRight className="w-4 h-4 " />
+                        </Link>
+                        <div>
+                          <div className="text-2xl font-bold text-primary-600">
+                            ৳{property.price.toLocaleString()}
+                          </div>
+                          <div className="text-xs text-secondary-500">
+                            per month
+                          </div>
                         </div>
                       </div>
                     </div>
