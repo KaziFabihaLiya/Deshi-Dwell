@@ -107,6 +107,35 @@ app.get("/api/properties/:id", async (req, res) => {
   }
 });
 
+const fetchProperties = async () => {
+  try {
+    setLoading(true);
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL; // Log the env var
+    console.log(" Fetching from URL:", `${apiUrl}/properties`); // Debug log
+
+    const response = await fetch(`${apiUrl}/properties`);
+
+    console.log(" Response status:", response.status); // e.g., 200 or 404
+    console.log(" Response OK:", response.ok); // true/false
+
+    if (!response.ok) {
+      const errorText = await response.text(); // Get HTML/error body
+      console.error(" Fetch error details:", errorText); // Log full response
+      throw new Error(
+        `HTTP ${response.status}: ${errorText.substring(0, 200)}...`
+      );
+    }
+
+    const data = await response.json();
+    setProperties(data);
+  } catch (error) {
+    console.error("Error fetching properties:", error);
+    toast.error("Failed to load properties");
+  } finally {
+    setLoading(false);
+  }
+};
+
 // POST create new property
 app.post("/api/properties", async (req, res) => {
   try {
